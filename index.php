@@ -11,7 +11,7 @@
 File Edit Options Buffers Tools Help
 </div>
 <div class="bufferC">
-<div class="buffer">hi</div>
+<pre class="buffer"></pre>
 <pre class="statusbar">
 -111:**--F1&nbsp;&nbsp;&nbsp;index.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All L14&nbsp;&nbsp;&nbsp;&nbsp;(Fundamental)---------------------------------------------------------------------------------------------------------------------
 </pre>
