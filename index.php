@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="main.css">
 <script src="jquery.js"></script>
 <script src="script.js"></script>
+<script src="commands.js"></script>
 </head>
 <body>
 <div id="menubar">
@@ -17,7 +18,6 @@ File Edit Options Buffers Tools Help
 </pre>
 </div>
 <div id="minibuffer">
-C-x C-g is undefined
 </div>
 </body>
 </html>
