@@ -22,7 +22,10 @@ $(document).ready(function() {
 		if(isControl) {
 		    return;
 		}
-		$('.buffer')[0].innerText = $('.buffer')[0].innerText+String.fromCharCode(ch);
+	    $('.buffer')[0].innerText = $('.buffer')[0].innerText.substr(0,point) + $('.buffer')[0].innerText.substr(point+1); // Removes the Cursor character
+	    $('.buffer')[0].innerText = $('.buffer')[0].innerText+String.fromCharCode(ch);
+	    $('.buffer')[0].innerText = $('.buffer')[0].innerText+String.fromCharCode(9611); //Adds the Cursor index character after edit.
+	    //$('.buffer')[0].innerText = $('.buffer')[0].innerText+String.fromCharCode(ch);
 		    $("#minibuffer").html("");
 		point++;
 		//		isChar=false;
