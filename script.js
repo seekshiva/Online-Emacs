@@ -1,4 +1,4 @@
-var point=0,line=1,isChar=false;isControl=false; isAlt=false; command = "";
+var point=0,line=1,isChar=false;isControl=false; isAlt=false; command = "", cursor=String.fromCharCode(9611);
 function stopDefault( e ) {
     // Prevent the default browser action (W3C)
     if ( e && e.preventDefault )
@@ -16,19 +16,23 @@ $(document).ready(function() {
 		$('.buffer').css('height',function() {
 			return $(window).height()-70;
 		    });
-	    });
+	 });
+	$('.buffer')[0].innerText = $('.buffer')[0].innerText+cursor; // Acknowledge content and add Cursor
+	point=$('.buffer')[0].innerText.length;// Find the Length of the whole preexisting content and set it to point
 	$(window).keypress(function(e) {
-		ch = e.keyCode;
+	 	ch = e.keyCode;
 		if(isControl) {
-		    return;
+			return;
 		}
+		$('.buffer')[0].innerText = $('.buffer')[0].innerText.substr(0,point-1) + $('.buffer')[0].innerText.substr(point); // Removes the Cursor character
 		$('.buffer')[0].innerText = $('.buffer')[0].innerText+String.fromCharCode(ch);
-		    $("#minibuffer").html("");
+		$('.buffer')[0].innerText = $('.buffer')[0].innerText+cursor; //Adds the Cursor index character after edit.
+		$("#minibuffer").html("");
 		point++;
 		//		isChar=false;
 	    });
       	$(window).keydown(function(e) {
-		ch = e.keyCode;//alert(ch);
+	    ch = e.keyCode;//alert(ch);
 		switch(ch) {
 		case 17:
 		    isControl = true;
@@ -46,23 +50,23 @@ $(document).ready(function() {
 
 		if(ch==8) {//backspace
 		    if(point==0) return;
-		    $('.buffer')[0].innerText = $('.buffer')[0].innerText.substr(0,point-1) + $('.buffer')[0].innerText.substr(point);
-		    $("#minibuffer").html("");
+		    $('.buffer')[0].innerText = $('.buffer')[0].innerText.substr(0,point-2) + $('.buffer')[0].innerText.substr(point-1);
+			$("#minibuffer").html("");
 		    point--;
 		    return;
 		}
 		if(ch==46) {//delete key
-		    spos=point;
+		    spos=point+1;
 		    if(point==0) return;
-		    $('.buffer').html($('.buffer').html().substr(0,spos)+$('.buffer').html().substr(point+1));
+		    $('.buffer').html($('.buffer').html().substr(0,spos)+$('.buffer').html().substr(spos+1));
 		    $("#minibuffer").html("");
 		    point-=point-spos;
 		    return;
 		}
 		if(ch==32) {
-		    //$('.buffer').html($('.buffer').html()+'&nbsp;');
+		   // $('.buffer').html($('.buffer').html()+'&nbsp;');
 		    //point+=6;
-		}
+			}
 	    });
       	$(window).keyup(function(e) {
 		ch = e.keyCode;//alert(ch);
