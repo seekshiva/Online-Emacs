@@ -1,7 +1,8 @@
-body {background-color:#000; color:#0F0; margin:0; padding-top:20px; font-family:monospace; font-size:medium; aoverflow:hidden; cursor:none; }
+body {background-color:#000; color:#0F0; margin:0; padding-top:20px; font-family:monospace; font-size:medium;  cursor:none; }
 
 #menubar {color:#000; background-color:#0F0; width:100%; position:fixed; top:0;}
 #minibuffer {position:fixed; bottom:5px; z-index:10000; background-color:#000; }
 
 .bufferC .buffer {width:100%; max-width:100%; height:705px; margin:0; }
+.buffer{ overflow:auto;}
 .statusbar {color:#000; background-color:#0F0; max-width:100%; overflow:hidden;  }
