@@ -16,13 +16,13 @@ $(document).ready(function() {
 	$('.buffer').css('height',function() {
 	    return $(window).height()-70;
 	});
-	 });
+    });
     $('.buffer')[0].innerText = $('.buffer')[0].innerText+cursor; // Acknowledge content and add Cursor
-    point=$('.buffer')[0].innerText.length;// Find the Length of the whole preexisting content and set it to point
+    point=$('.buffer')[0].innerText.length -1;// Find the Length of the whole preexisting content and set it to point
     $(window).keypress(function(e) {
 	ch = e.keyCode;
 	if(isControl) {
-			return;
+	    return;
 	}
 	$('.buffer')[0].innerText = $('.buffer')[0].innerText.substr(0,point) + $('.buffer')[0].innerText.substr(point+1); // Removes the Cursor character
 	$('.buffer')[0].innerText = $('.buffer')[0].innerText+String.fromCharCode(ch);
@@ -30,7 +30,7 @@ $(document).ready(function() {
 	$("#minibuffer").html("");
 	point++;
 	isChar=false;
-	});
+    });
     $(window).keydown(function(e) {
 	ch = e.keyCode;//alert(ch);
 	switch(ch) {
@@ -50,7 +50,7 @@ $(document).ready(function() {
 	
 	if(ch==8) {//backspace
 	    if(point==0) return;
-	    $('.buffer')[0].innerText = $('.buffer')[0].innerText.substr(0,point-2) + $('.buffer')[0].innerText.substr(point-1);
+	    $('.buffer')[0].innerText = $('.buffer')[0].innerText.substr(0,point-1) + $('.buffer')[0].innerText.substr(point);
 	    $("#minibuffer").html("");
 	    point--;
 	    return;
@@ -96,7 +96,7 @@ $(document).ready(function() {
 		e.stopPropagation();		    
 	    return;
 	}
-	//		    stopDefault(e);
+	//stopDefault(e);
     };
     window.onfocus = function() {
 	isControl=false; isAlt=false;
